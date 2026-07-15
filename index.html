@@ -165,5 +165,86 @@ We used a motor to make the fish spin. We attached the disk to the motor nub wit
 
 		</div>
 	</div> 
+
+	<div class = "row">
+		<img src = "">
+		<div class = "row-text">
+			<h1> Week 3</h1>
+			<h3> </h3>
+			<p> Much has changed since the begining of the program and so has my vision for my final project. I have decided that an eye sculpture would be very fun to make and to focus my energy towards that idea instead. The eyeball would mount on the wall and use infrared sensors to locate nearby people and look at them. The eye will follow people when they are detected. This week I became more familiar with learning the Arduino coding language and ussed it to give my kinetic sculpture from earlier some new instructions. I made it spin foward and than change directions and spin backwards by reversing the highs and lows in my code. My code: </p>
+
+			<p> const int A1A = D0;  // define pin 12 for A-1A
+const int A1B = D1;  // define pin 14 for A-1B
+
+
+void setup() {
+ pinMode(A1A, OUTPUT);     // specify these pins as outputs
+ pinMode(A1B, OUTPUT);
+ digitalWrite(A1A, LOW);   // start with the motors off
+ digitalWrite(A1B, LOW);
+}
+
+
+void loop() {
+ // start the motor
+ digitalWrite(A1A, HIGH);  
+ digitalWrite(A1B, LOW);
+ delay(8000);
+               // allow the motor to run for 4 seconds
+ digitalWrite(A1A, LOW);
+ digitalWrite(A1A, LOW);
+ delay(100);
+
+
+ // stop the motor
+ digitalWrite(A1A, LOW);   // setting both pins LOW stops the motor
+ digitalWrite(A1B, HIGH);   // redundant, but doesn't hurt
+ delay(8000);              // keep the motor off for 2 seconds
+
+} </p>
+			<p> This week I also learned how to export files to PrusaSlicer to adjust creations for the 3D printer. I 3D printed a small cube and a small lego block this week and now feel confident with the printers. I also learned how to make 3D images of items by digitally scanning them. To do this I downloaded Reality Scan onto my iPhone and used my camera to make a 3D model of my wallet. It didn't turn out very well and next time I think I willl use a different applicaion to scan things. </p>
+
+
+
+		</div>
+	</div> 
+
+
+
+div class = "row">
+		<img src = "">
+		<div class = "row-text">
+			<h1> Week 3</h1>
+			<h3> </h3>
+			<p>
+	// Setup serial port baud rate and define INPUT and OUTPUT pins
+int blueSensorPin = A0;
+int blueLEDPin = D7;
+int blueSensorValue = 0;
+int blueValue = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(blueSensorPin, INPUT);
+  pinMode(blueLEDPin, OUTPUT);
+}
+// Read phototransistor light levels, display raw and converted analog values.
+// Produce varying intensity LED levels
+void loop() {
+  blueSensorValue = analogRead(blueSensorPin);
+  delay(5);
+  Serial.print("Raw Sensor value \t Blue:");
+  Serial.println(blueSensorValue);
+  //delay(1000);
+  blueValue = blueSensorValue / 4;
+
+  Serial.print("Mapped Sensor Value \t Blue:");
+  Serial.println(blueValue);
+  //delay(1000);
+  analogWrite(blueLEDPin, blueValue);
+}</p>
+</div>
+	</div> 
+
 </body>
 </html>
