@@ -50,94 +50,20 @@
 		<div class = "row-text">
 			<h1> Week 1</h1>
 			<h3> Final Project Plan </h3>
-			<p> Project option 1: Dragonfly Sculpture
-I would like to create a large dragonfly sculpture that can move its wings like a real dragonfly. It will not be useful, but it will look nice.
-I want to explore:
--Creating collaged visual effects for the wings
--Mimic dragonfly wing patterns
--Combining art and engineering
+			<p> Project option 1: Dragonfly Sculpture </p>
+			<p> I would like to create a large dragonfly sculpture that can move its wings like a real dragonfly. It will not be useful, but it will look nice.I want to explore: Creating collaged visual effects for the wings, mimicking dragonfly wing patterns, and combining art and engineering. </p>
 
-Project option 2: Lamp
-This would be a lamp that turns on and off like a regular lamp. It would incorporate my artistic style and technology.
-I want to explore:
--LEDs
--Arduino
--Sensors
+			<p> Project option 2: Lamp </p>
+			<p> This would be a lamp that turns on and off like a regular lamp. It would incorporate my artistic style and technology. I want to explore: LEDs, Arduino, and motion Sensors. </p>
 
-Project option 3: Eyeball sculpture
-This would be a sculpture of an eye that blinks. It would demonstrate my fascination with eyes.
-I want to explore:
--The human eye
--Arduino
--Art and engineering
+			<p> Project option 3: Eyeball sculpture </p>
+			<p> This would be a sculpture of an eye that blinks. It would demonstrate my fascination with eyes.I want to explore: The human eye, Arduino, and combining Art and engineering </p>
 
-Final project direction
+<p> Final project direction
 After exploring these ideas, I am most interested in the dragonfly sculpture. I chose this idea
-because it combines my interest in nature, art and engineering. I don't want to make a useful thing,
-I would like to make my final project purely aesthetic. The movement of the wings creates a difficult
-design challenge because I want them to feel realistic and be strong enough to hold their shape.
-Next steps:
--research dragonfly wing anatomy
--learn how to make things move with gears
--create sketches
+because it combines my interest in nature, art and engineering. I don't want to make a useful thing,I would like to make my final project purely aesthetic. The movement of the wings creates a difficult design challenge because I want them to feel realistic and be strong enough to hold their shape.
+My next steps are to research dragonfly wing anatomy,learn how to make things move with gears, and create physical sketches. </p>
 
-
-# Dragonfly research
-Things I learned:
--Dragonflies have four independent wings
--The body must stay balanced during movement
--There are small weights at the tops of the wings that keep it balanced
--The individual cells in the wings are visible and make cool vain patterns
-Questions:
--How can I replicate the wing motion with gears instead of muscles?
--How can I hide the electronics?
--How do I display it and make it stable in motion?
--What materials are light enough?
--What should it be made of?
-
-
-# Dragonfly system
-1. Body
-Purpose:
--House the mechanics
--Connect to the wings
-Possible materials:
--3D printed shell
--double wall of wood and something else possibly?
-Possible challenges:
--Attaching to wings, tail, head, and electronics
--Making it the right size to contain the electronics
--Having openings to attach wings
-2. tail
-Purpose:
--Stability
--Adds realism
-Possible materials:
--3D printed segments
-3. wings
-Purpose:
--makes it fly is real life but for this project it they will just flap
--light weight movement
--Artistic purpose because it contains the most creative elements
-Possible materials:
--3D printed structure
--Lace and other lovely translucent fabrics
-Possible challenges:
--Keeping wings lightweight
--Making them strong and durable but also lightweight and pretty
--Attaching the wings without damaging them
-4. Head
-Purpose:
--Holds eyes and possibly electronics
--Adds personality and realism
--Helps with stability?
-Possible materials:
--3D printed
--Something pretty for shiny eyes
-Possible challenges:
--Hiding wires?
--connect strongly to the body
--Not interfering with the wing motion </p>
 
 		</div>
 	</div> 
@@ -158,7 +84,7 @@ Possible challenges:
 	<div class = "row">
 		<img src = "Sculp.jpg">
 		<div class = "row-text">
-			<h1> Week 3</h1>
+			<h1> week 2</h1>
 			<h3> Kinetic Sculpture</h3>
 			<p>For my kinetic sculpture I worked with Sofia and Emma to create a merry go-round with fish organised into the food chain. A cell, then a shrimp, a small fish, a big fish, and a shark. First, the fish were sketched into an online illustration app and were uploaded to fusion. A cylinder with an aquatic wave pattern on the rim, a circular base and smaller rotating disk to attach the fish on to. Then the fish were duplicated so that each of them could be double sides. They were laser cut from cardboard and hot glued onto tooth picks. Then the toothpicks were attached to a cardboard disk
 We used a motor to make the fish spin. We attached the disk to the motor nub with a cardboard support. We attached the motor onto the base circle and used cardboard to support and stabilize it.We used a USB port as a power source which connected to an outlet. We had two problems. The first was that the way the motor was spinning made the fish swim backwards. We fixed this by flipping the motor upside down and later on realized there are much easier methods of changing the direction of the motor. We did end up solving the issue though. The second problem was that the fish swam very fast. When the sculpture was powered up none of our beautiful details were visible because they were spinning too fast. We tried to solve this problem electronically by adding resisters, but all of the resisters were too strong. We concluded that altering the circuitry wouldn’t solve the speed issue, so we gave up. It still spins very fast when plugged in. </p>
@@ -167,7 +93,7 @@ We used a motor to make the fish spin. We attached the disk to the motor nub wit
 	</div> 
 
 	<div class = "row">
-		<img src = "">
+		<img src = "IMG_5631.jpg">
 		<div class = "row-text">
 			<h1> Week 3</h1>
 			<h3> </h3>
@@ -211,11 +137,13 @@ void loop() {
 
 
 
-div class = "row">
+		<div class = "row">
 		<img src = "">
 		<div class = "row-text">
 			<h1> Week 3</h1>
-			<h3> </h3>
+			<h3> Input Devices </h3>
+			<p> This week I tried to make a IR object distence sensor that can observe an object infront of it and convert the distance into visable light. I struggled with the circut and code for a very long time until it should have started working, but nomater what I did the  numbers in the serial moniter wouldn't change with the distance of my hand from the sensor. I worked out all the errors possible errors I could with help from Victor, but it continued to not function. My thought is that it didn't work because of the condition of the room. If infrared light was detected from my computer and the window I may have confused the system. </p>
+
 			<p>
 	// Setup serial port baud rate and define INPUT and OUTPUT pins
 int blueSensorPin = A0;
@@ -242,9 +170,17 @@ void loop() {
   Serial.println(blueValue);
   //delay(1000);
   analogWrite(blueLEDPin, blueValue);
-}</p>
+}
+</p>
+
 </div>
 	</div> 
+
+		<div class = "row">
+		<img src = "">
+		<div class = "row-text">
+			<h1> Week 4</h1>
+			<h3> </h3>
 
 </body>
 </html>
