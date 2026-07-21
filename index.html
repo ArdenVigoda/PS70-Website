@@ -84,7 +84,7 @@ My next steps are to research dragonfly wing anatomy,learn how to make things mo
 	<div class = "row">
 		<img src = "Sculp.jpg">
 		<div class = "row-text">
-			<h1> week 2</h1>
+			<h1> week 3</h1>
 			<h3> Kinetic Sculpture</h3>
 			<p>For my kinetic sculpture I worked with Sofia and Emma to create a merry go-round with fish organised into the food chain. A cell, then a shrimp, a small fish, a big fish, and a shark. First, the fish were sketched into an online illustration app and were uploaded to fusion. A cylinder with an aquatic wave pattern on the rim, a circular base and smaller rotating disk to attach the fish on to. Then the fish were duplicated so that each of them could be double sides. They were laser cut from cardboard and hot glued onto tooth picks. Then the toothpicks were attached to a cardboard disk
 We used a motor to make the fish spin. We attached the disk to the motor nub with a cardboard support. We attached the motor onto the base circle and used cardboard to support and stabilize it.We used a USB port as a power source which connected to an outlet. We had two problems. The first was that the way the motor was spinning made the fish swim backwards. We fixed this by flipping the motor upside down and later on realized there are much easier methods of changing the direction of the motor. We did end up solving the issue though. The second problem was that the fish swam very fast. When the sculpture was powered up none of our beautiful details were visible because they were spinning too fast. We tried to solve this problem electronically by adding resisters, but all of the resisters were too strong. We concluded that altering the circuitry wouldn’t solve the speed issue, so we gave up. It still spins very fast when plugged in. </p>
@@ -95,7 +95,7 @@ We used a motor to make the fish spin. We attached the disk to the motor nub wit
 	<div class = "row">
 		<img src = "IMG_5631.jpg">
 		<div class = "row-text">
-			<h1> Week 3</h1>
+			<h1> Week 4</h1>
 			<h3> </h3>
 			<p> Much has changed since the begining of the program and so has my vision for my final project. I have decided that an eye sculpture would be very fun to make and to focus my energy towards that idea instead. The eyeball would mount on the wall and use infrared sensors to locate nearby people and look at them. The eye will follow people when they are detected. This week I became more familiar with learning the Arduino coding language and ussed it to give my kinetic sculpture from earlier some new instructions. I made it spin foward and than change directions and spin backwards by reversing the highs and lows in my code. My code: </p>
 
@@ -138,9 +138,9 @@ void loop() {
 
 
 		<div class = "row">
-		<img src = "">
+		<img src = "IMG_5609.jpg">
 		<div class = "row-text">
-			<h1> Week 3</h1>
+			<h1> Week 5</h1>
 			<h3> Input Devices </h3>
 			<p> This week I tried to make a IR object distence sensor that can observe an object infront of it and convert the distance into visable light. I struggled with the circut and code for a very long time until it should have started working, but nomater what I did the  numbers in the serial moniter wouldn't change with the distance of my hand from the sensor. I worked out all the errors possible errors I could with help from Victor, but it continued to not function. My thought is that it didn't work because of the condition of the room. If infrared light was detected from my computer and the window I may have confused the system. </p>
 
@@ -177,10 +177,106 @@ void loop() {
 	</div> 
 
 		<div class = "row">
-		<img src = "">
+		<img src = "IMG_5720.jpg">
 		<div class = "row-text">
-			<h1> Week 4</h1>
-			<h3> </h3>
+			<h1> Week 6</h1>
+			<h3> MVP</h3>
+			<p> Time is bluring together and I don't really know what week of the program it is. In the time that has passed we have been learning about input and output mechanisms. We did MVP projects. For my project decided to make a ultrasonic sensor conect to a servo motor. An ultrasonic sensor bounces sound off of an object and converts the density of the air inbetween the sensor and object into distance. If you put your hand infront of the sensor the servo moves. After getting my circuit and code to work I created a structure to hold two servo motors and two sensors. One servo connects to a disk that makes the eye rotate back and forth and the other servo attaches to the eyeball to make it move up and down. I had to double my previous instructions and create new variables to integrate the new sensor and motor into my circuit which created new chalenges in my code. It took some trouble shooting, but everything works now. I now have a good prototype of my final project. For my final project I wil improve on this design by color coding my wires, enlarging the structure, and perhaps enabling the sensors to comunicate and detect the position of the object as well as the distance of the object from the sensor. 
+			<p> #include <ESP32Servo.h> // Changed to the ESP32 compatible library
+
+
+// Put back your ESP32 pins (D7, D8, D9)
+const int TRIG_PIN  = D7; 
+const int ECHO_PIN  = D8; 
+const int SERVO_PIN = D9;
+
+
+const int TRIG2_PIN = D1;
+const int ECHO2_PIN = D0;
+const int SERVO2_PIN = D2;
+
+
+const int DISTANCE_THRESHOLD = 10; // centimeters
+const int DISTANCE2_THRESHOLD = 20; // centimeters
+
+
+
+
+Servo servo; // The object creation stays the same
+Servo servo2; // Naming our servos
+
+
+float duration_us, distance_cm;
+float duration2_us, distance2_cm;
+
+
+void setup() {
+ Serial.begin(115200); // ESP32 typically prefers 115200 baud
+  pinMode(TRIG_PIN, OUTPUT);
+ pinMode(ECHO_PIN, INPUT); 
+ pinMode(TRIG2_PIN, OUTPUT);
+ pinMode(ECHO2_PIN, INPUT);
+  // ESP32Servo handles the timer allocation automatically here
+ servo.attach(SERVO_PIN);  
+ servo.write(0);
+ servo2.attach(SERVO2_PIN);  
+ servo2.write(0);
+}
+
+
+void loop() {
+   // --- SENSOR 1: TRIGGER & MEASURE ---
+ digitalWrite(TRIG_PIN, LOW);
+ delayMicroseconds(2);
+ digitalWrite(TRIG_PIN, HIGH);
+ delayMicroseconds(10);
+ digitalWrite(TRIG_PIN, LOW);
+ // This line pauses the code until Sensor 1 finishes receiving sound
+ duration_us = pulseIn(ECHO_PIN, HIGH, 30000); // 30ms timeout prevents freezing
+ distance_cm = 0.017 * duration_us;
+
+
+ // Short pause to let Sensor 1's physical sound waves fade away
+ delay(20);
+
+
+ // --- SENSOR 2: TRIGGER & MEASURE ---
+ digitalWrite(TRIG2_PIN, LOW);
+ delayMicroseconds(2);
+ digitalWrite(TRIG2_PIN, HIGH);
+ delayMicroseconds(10);
+ digitalWrite(TRIG2_PIN, LOW);
+ // Now we safely measure Sensor 2 after its own fresh trigger pulse
+ duration2_us = pulseIn(ECHO2_PIN, HIGH, 30000);
+ distance2_cm = 0.017 * duration2_us;
+
+
+ if (distance_cm < DISTANCE_THRESHOLD && distance_cm > 0) {
+   servo.write(180);
+ } else {
+   servo.write(0);  
+ }
+  if (distance2_cm < DISTANCE2_THRESHOLD && distance2_cm > 0) {
+   servo2.write(180);
+ } else {
+   servo2.write(0);  
+ }
+
+
+ Serial.print("Sensor 1: ");
+ Serial.print(distance_cm);
+ Serial.println(" cm");
+
+
+ Serial.print("Sensor 2: ");
+ Serial.print(distance2_cm);
+ Serial.println(" cm");
+
+
+ delay(500);
+}
+
+</p>
 
 </body>
 </html>
